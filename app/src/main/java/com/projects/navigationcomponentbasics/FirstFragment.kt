@@ -16,12 +16,12 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentFirstBinding.inflate(inflater,container,false)
-//        val view = inflater.inflate(R.layout.fragment_first, container, false)
-
         binding.textview1.setOnClickListener{
-            Navigation.findNavController(binding.root).navigate(R.id.action_firstFragment_to_secondFragment)
+            //safe args creates FirstFragmentDirections class in java(generated) folder
+            val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(22)
+            Navigation.findNavController(binding.root).navigate(action)
+
         }
 
         return binding.root
